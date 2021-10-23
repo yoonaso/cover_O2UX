@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='login-resource/css/style.css')}}">
+    <script src="{{url_for('static', filename='login-resource/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{url_for('static', filename='login-resource/js/script.js')}}"></script>
+
+    <title>login</title>
+
+
+</head>
+<body>
+    <div class="form_box posi">
+      <form action="/login/" method="POST" id="login">
+        <div class="title">
+          <h1>Login</h1>
+        </div>
+        
+        <div class="input_box">
+          <input type="text" placeholder="ID" name="username">
+        </div>
+    
+        <div class="input_box">
+          <input type="password" name="password" placeholder="Password">
+        </div>
+    
+        <div class="btm_txt clearfix">
+          <span class="cell">사용자를 찾을 수 없습니다.</span>
+
+          <a class="cell_r" href="/find_password/" target="_self">
+            비밀번호 찾기
+          </a> 
+          <font color="red">{{message}}</font>
+        </div>
+    <!--비밀번호 찾기 페이지 이동-->
+        <button type="submit" onclick="" class="btn">
+        <p class="font_color">로그인하기</p>
+        </button>
+    <!--로그인 성공 시 메인으로-->
+    <!--로그인 실패 시 사용자를 찾을 수 없다 메시지 출력-->
+      </form>
+    </div>
+    <footer>
+  <p>copyright © all rights reserved</p>
+    </footer>
+</body>
+</html>

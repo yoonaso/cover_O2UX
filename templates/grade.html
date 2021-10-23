@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='grade-resource/css/style.css')}}">
+    <script src="{{url_for('static',filename='grade-resource/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{url_for('static',filename='grade-resource/js/script.js')}}"></script>
+    <title>Input grade</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-wrap clearfix">
+            <div class="logo cell">
+                <a href="#">logo</a>
+            </div>
+
+            <nav class="cell_r">
+                <ul>
+                    <li><a href="#">문의현황<img src="{{url_for('static',filename='main-resource/img/request.png')}}" alt="request"></a></li>
+                    <li><a href="/change/information/">정보수정<img src="{{url_for('static',filename='main-resource/img/join.png')}}" alt="change"></a></li>
+                    <li><a href="/logout/">로그아웃<img src="{{url_for('static',filename='main-resource/img/logout.png')}}" alt="logout"></a></li>
+                    <li class="point">
+                        <span class="close color_2"></span>
+                        <span class="close color_2"></span>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+    </header>
+
+    <div id="circle_menu">
+        <div class="circle">
+            <span class="location color_2"></span>
+            <span class="location_2 color_2"></span>
+        </div>
+    </div>
+
+    <div class="grade_info">
+        <form action="/result_grade/" method="POST" class="grade_input">
+
+            <div class="grade_box">
+                <table class="grade">
+                    <div class="cap">
+                        <p>수강과목</p>
+                    </div>
+
+                    <thead>
+                        <tr>
+                            <th>트랙구분</th>
+                            <th>연도</th>
+                            <th>과목명</th>
+                            <th>해당학점</th>
+                            <th>성적</th>
+                            <th>흥미도</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for n in score_list %}
+                        <tr>
+                            <td>{{n[1]}}</td>
+                            <td>{{n[0]}}</td>
+                            <td>{{n[2]}}</td>
+                            <td>{{n[3]}}</td>
+                            <td>{{n[4]}}</td>
+                            <td>
+                                <select name='inter'>
+                                    <option value='A'>A</option>
+                                    <option value='B'>B</option>
+                                    <option value='C'>C</option>
+                                    <option value='D'>D</option>
+                                </select>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <table class="interest">
+                <div class="cap">
+                    <p>흥미도</p>
+                </div>
+
+                <thead>
+                    <tr>
+                        <th>흥미도</th>
+                        <th>반영비율</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="" id="">
+                                <option value="">10%</option>
+                                <option value="">20%</option>
+                                <option value="">30%</option>
+                                <option value="">40%</option>
+                                <option value="">50%</option>
+                                <option value="">60%</option>
+                                <option value="">70%</option>
+
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="btn_wrap">
+                <button type="button" onclick="location.href='/school_login/'">
+                    <p>성적 불러오기</p>
+                </button>
+            <!--성적 불러오기-->
+                <button type="submit">
+                    <p>추가완료</p>
+                </button>
+             <!--grade가 담겨 검사 전 페이지로 이동-->   
+            </div>
+        </form>
+    </div>
+
+ 
+
+</body>
+
+</html>
